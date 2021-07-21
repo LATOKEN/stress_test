@@ -68,7 +68,7 @@ async def main():
     feed_wallet = Wallet(FEED_PRIVATE_KEY, next(c))
     wallets = [Wallet(utils.sha3(os.urandom(4096)), next(c)) for _ in range(WALLETS_NUMBER)]
     for w in wallets:
-        feed_wallet.send(w.address, 1000000000)
+        feed_wallet.send(w.address, 1000000000000000000)
 
     print("Start sending txes...")
 
