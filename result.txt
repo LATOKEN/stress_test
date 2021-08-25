@@ -1,0 +1,65 @@
+Starting...
+
+Block No: 240
+Difference between blocks: 2.478501796722412sec
+Tx in current bloc: 1
+TPS: 0.40347040200208395
+time/tx: 2.478496551513672sec
+avergae tx/block: 1.0
+average block time: 2.478496551513672sec
+
+Block No: 241
+Difference between blocks: 4.575149774551392sec
+Tx in current bloc: 94
+TPS: 13.468211419808535
+time/tx: 0.07424890869542172sec
+avergae tx/block: 47.5
+average block time: 3.5268231630325317sec
+
+Block No: 242
+Difference between blocks: 4.736205339431763sec
+Tx in current bloc: 78
+TPS: 14.673636692672483
+time/tx: 0.0681494315924672sec
+avergae tx/block: 57.666666666666664
+average block time: 3.929950555165609sec
+
+Block No: 243
+Difference between blocks: 5.217167854309082sec
+Tx in current bloc: 24
+TPS: 11.583452336876501
+time/tx: 0.08633004832388785sec
+avergae tx/block: 49.25
+average block time: 4.251754879951477sec
+
+Block No: 244
+Difference between blocks: 4.7808451652526855sec
+Tx in current bloc: 98
+TPS: 13.539647150567323
+time/tx: 0.07385716842392744sec
+avergae tx/block: 59.0
+average block time: 4.357572937011719sec
+
+Block No: 245
+Difference between blocks: 3.8904788494110107sec
+Tx in current bloc: 38
+TPS: 12.968126217058893
+time/tx: 0.07711214274615497sec
+avergae tx/block: 55.5
+average block time: 4.279723922411601sec
+
+Block No: 246
+Difference between blocks: 5.220826864242554sec
+Tx in current bloc: 38
+TPS: 12.0067948495945
+time/tx: 0.08328617358143439sec
+avergae tx/block: 53.0
+average block time: 4.414167199816022sec
+
+Block No: 247
+Difference between blocks: 5.97482442855835sec
+Tx in current bloc: 109
+TPS: 13.017303990209692
+time/tx: 0.07682082255681356sec
+avergae tx/block: 60.0
+average block time: 4.6092493534088135sec
