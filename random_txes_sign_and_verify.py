@@ -14,6 +14,8 @@ import ethereum
 import random
 
 LOCALNET_NODE = "http://localhost:7070"
+
+#set chain id from config
 old_chain_id = 25
 new_chain_id = 227
 session = requests.Session()
