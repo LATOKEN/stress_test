@@ -12,7 +12,7 @@ import ethereum
 import random
 
 LOCALNET_NODE = "http://localhost:7070"
-wallet_password = "525bd9da919a12f7197c3961d64fd9336b3de435";
+wallet_password = "525bd9da919a12f7197c3961d64fd9336b3de435"
 
 session = requests.Session()
 def send_api_request_to_address(address, params , method):
