@@ -96,11 +96,15 @@ def test_random_tx(my_private_key, chain_id, use_new_chain_id):
     tx_hash = verify_raw_tx(raw_tx, use_new_chain_id)
     print(tx_hash)
     
-
-if __name__ == "__main__":
+def start_test():
     my_private_key = generate_random_private_key()
     no_of_test = 10
     for _ in range(no_of_test):
         test_random_tx(my_private_key, old_chain_id, False)
         test_random_tx(my_private_key, new_chain_id, True)
+
+if __name__ == "__main__":
+    no_of_test = 10
+    for _ in range(no_of_test):
+        start_test()
         

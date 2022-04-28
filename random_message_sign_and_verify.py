@@ -51,7 +51,7 @@ def verify_signed_message(message, signed_message, use_new_chain_id):
     return send_api_request([message, signed_message, use_new_chain_id], "fe_verifySign")
 
 def sign_and_verify_random_message(use_new_chain_id):
-    msg = get_random_hex_message(111)
+    msg = get_random_hex_message(random.randint(64,111))
     signed_message = sign_message(msg, use_new_chain_id)
     result = verify_signed_message(msg, signed_message, use_new_chain_id)
     if result == True:
