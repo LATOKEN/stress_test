@@ -94,7 +94,19 @@ def test_random_tx(my_private_key, chain_id, use_new_chain_id):
     signed_tx = web3.eth.Account.signTransaction(tx, my_private_key.to_bytes())
     raw_tx = web3.Web3.toHex(signed_tx.rawTransaction)
     tx_hash = verify_raw_tx(raw_tx, use_new_chain_id)
+    tx_hash_bytes = decode_hex(tx_hash)
+    actual_hash_bytes = signed_tx.hash
+    actual_hash = web3.Web3.toHex(actual_hash_bytes)
+    print("actual hash: ")
+    print(actual_hash)
+    print("got tx hash: ")
     print(tx_hash)
+
+    if tx_hash_bytes == actual_hash_bytes:
+        print("hash matches")
+    else:
+        print("hash mismatche")
+        raise Exception("hash mismatche")
     
 def start_test():
     my_private_key = generate_random_private_key()
