@@ -69,7 +69,7 @@ def generate_random_address():
         key = key + digit[2]
     return ethereum.utils.checksum_encode(key)
 
-def generate_tx(from_address, to_address, amount, chain_id):
+def generate_tx(from_address, to_address, amount):
     int_nonce = update_nonce(from_address)
     transaction = {
         "from": from_address,
@@ -77,43 +77,54 @@ def generate_tx(from_address, to_address, amount, chain_id):
         "value": amount,
         "gas": 100000000,
         "gasPrice": 1,
-        "nonce": int_nonce,
-        "chainId": chain_id
+        "nonce": int_nonce
+        #"chainId": chain_id
+        #will add chain id later
     }
     return transaction
 
-def verify_raw_tx(raw_tx, use_new_chain_id):
-    return send_api_request([raw_tx, use_new_chain_id], "fe_verifyRawTransaction")
+def verify_raw_tx(raw_tx, tx_hash, use_new_chain_id):
+    return send_api_request([raw_tx, tx_hash, use_new_chain_id], "fe_verifyRawTransaction")
 
-def test_random_tx(my_private_key, chain_id, use_new_chain_id):
-    to_address = generate_random_address()
-    amount = random.randint(0,100000)
-    my_address = my_private_key.public_key.to_checksum_address()
-    tx = generate_tx(my_address, to_address, amount, chain_id)
-    print(tx)
+def check_tx(my_private_key, tx, use_new_chain_id):
     signed_tx = web3.eth.Account.signTransaction(tx, my_private_key.to_bytes())
     raw_tx = web3.Web3.toHex(signed_tx.rawTransaction)
-    tx_hash = verify_raw_tx(raw_tx, use_new_chain_id)
-    tx_hash_bytes = decode_hex(tx_hash)
     actual_hash_bytes = signed_tx.hash
     actual_hash = web3.Web3.toHex(actual_hash_bytes)
-    print("actual hash: ")
-    print(actual_hash)
-    print("got tx hash: ")
-    print(tx_hash)
-
-    if tx_hash_bytes == actual_hash_bytes:
+    result = verify_raw_tx(raw_tx, actual_hash, use_new_chain_id)
+    tx_hash = result['hash']
+    print("message: " + result['message'])
+    print("api hash:    " + tx_hash)
+    print("signed hash: " + actual_hash)
+    print("v: " + str(int(result['v'],16)))
+    if tx_hash == actual_hash:
         print("hash matches")
     else:
         print("hash mismatche")
         raise Exception("hash mismatche")
+
+def test_random_tx(my_private_key):
+    to_address = generate_random_address()
+    amount = random.randint(0,100000)
+    my_address = my_private_key.public_key.to_checksum_address()
+    tx = generate_tx(my_address, to_address, amount)
+    
+    #using old chain id
+    old_tx = tx
+    old_tx["chainId"] = old_chain_id
+    check_tx(my_private_key, old_tx, False)
+
+    #using new chain id
+    new_tx = tx
+    new_tx["chainId"] = new_chain_id
+    check_tx(my_private_key, new_tx, True)
+    
     
 def start_test():
     my_private_key = generate_random_private_key()
     no_of_test = 10
     for _ in range(no_of_test):
-        test_random_tx(my_private_key, old_chain_id, False)
-        test_random_tx(my_private_key, new_chain_id, True)
+        test_random_tx(my_private_key)
 
 if __name__ == "__main__":
     no_of_test = 10

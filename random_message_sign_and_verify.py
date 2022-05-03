@@ -14,7 +14,7 @@ import random
 LOCALNET_NODE = "http://localhost:7070"
 
 # change wallet password from config
-wallet_password = "525bd9da919a12f7197c3961d64fd9336b3de435"
+wallet_password = "91848d5dfff0f2edf65337102aee80f2d80bea22"
 
 session = requests.Session()
 def send_api_request_to_address(address, params , method):
@@ -58,6 +58,7 @@ def sign_and_verify_random_message(use_new_chain_id):
         print("signature verified")
     else:
         print("signature not verified")
+        raise Exception("signature not verified")
 
 def unlock_wallet():
     return send_api_request([wallet_password, 1], "fe_unlock")
