@@ -14,7 +14,7 @@ import random
 LOCALNET_NODE = "http://localhost:7070"
 
 # change wallet password from config
-wallet_password = "91848d5dfff0f2edf65337102aee80f2d80bea22"
+wallet_password = "b260837f2a9c438101488065dab3f4b7dbebb1aa"
 
 session = requests.Session()
 def send_api_request_to_address(address, params , method):

@@ -70,14 +70,14 @@ def generate_random_address():
     return ethereum.utils.checksum_encode(key)
 
 def generate_tx(from_address, to_address, amount):
-    int_nonce = update_nonce(from_address)
+    #int_nonce = update_nonce(from_address)
     transaction = {
         "from": from_address,
         "to": to_address,
         "value": amount,
-        "gas": 100000000,
-        "gasPrice": 1,
-        "nonce": int_nonce
+        "gas": random.randint(100000000,10000000000),
+        "gasPrice": random.randint(1,100000000),
+        "nonce": random.randint(1,100000000)
         #"chainId": chain_id
         #will add chain id later
     }
